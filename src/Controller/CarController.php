@@ -81,10 +81,10 @@ class CarController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $car->setid($request->request->get('car')['id']);
+//            $car->setid($request->request->get('car')['id']);
             $car->setCarname($request->request->get('car')['Carname']);
             $car->setCarbrand($request->request->get('car')['Carbrand']);
-            $car->setCarprice($request->request->get('car')['CarPrice']);
+            $car->setCarprice($request->request->get('car')['Carprice']);
 //            $car->setPriority($request->request->get('car')['priority']);
 //            $car->setDueDate(\DateTime::createFromFormat('Y-m-d', $request->request->get('todo')['due_date']));
             $em = $this->getDoctrine()->getManager();
@@ -95,4 +95,27 @@ class CarController extends AbstractController
         }
         return false;
     }
+    /**
+     * @Route("/car/edit/{id}", name="car_edit")
+     */
+    public function editAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $car = $em->getRepository(Car::class)->find($id);
+
+        $form = $this->createForm(CarType::class, $car);
+
+        if ($this->saveChanges($form, $request, $car)) {
+            $this->addFlash(
+                'notice',
+                'Edited Successful'
+            );
+            return $this->redirectToRoute('car_list');
+        }
+
+        return $this->render('car/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 }
