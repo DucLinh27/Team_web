@@ -14,8 +14,8 @@ class OrderType extends AbstractType
     {
         $builder
             ->add('Discount',TextType::class)
-            ->add('CustomerID',TextType::class)
-            ->add('CarID',TextType::class)
+//            ->add('CustomerID',TextType::class)
+//            ->add('CarID',TextType::class)
         ;
     }
 
