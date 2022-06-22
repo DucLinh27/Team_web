@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('supplier_list') }}" class="btn btn-default">Back to Todo List</a>
+    <hr/>
+    <h2 class="page-header">{{ suppliers.id }}</h2>
+    <ul class="list-group">
+        <li class="list-group-item">SupplierName: {{ suppliers.suppliername }}</li>
+        {#        <li class="list-group-item">Due: <strong>{{ supplier.DateOrder|date('F j,Y, g:i a') }}</strong></li>#}
+        {#        <li class="list-group-item">Price: {{ car.Carprice }}</li>#}
+    </ul>
+    {#    <p>{{ car.description }}</p>#}
+{% endblock %}

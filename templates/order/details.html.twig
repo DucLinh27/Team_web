@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('order_list') }}" class="btn btn-default">Back to Todo List</a>
+    <hr/>
+    <h2 class="page-header">{{ orders.id }}</h2>
+    <ul class="list-group">
+                <li class="list-group-item">Discount: {{ orders.Discount }}</li>
+{#        <li class="list-group-item">Due: <strong>{{ order.DateOrder|date('F j,Y, g:i a') }}</strong></li>#}
+        {#        <li class="list-group-item">Price: {{ car.Carprice }}</li>#}
+    </ul>
+    {#    <p>{{ car.description }}</p>#}
+{% endblock %}
